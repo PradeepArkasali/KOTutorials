@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <script src="js/knockout-3.5.1.js"></script>
+    <body>
+        First Name: <input type="text"  name="txtFname" data-bind="value:FirstName"/> </body><br>
+        Last Name: <input type="text"  name="txtLname" data-bind="value:LastName"/>
+        <p>
+            Hello : <span data-bind="text:FullName"></span>
+        </p>
+    <script>
+        var FirstPageViewModel = function(fName, lName){
+            this.FirstName = ko.observable(fName);
+            this.LastName = ko.observable(lName);
+            this.FullName = ko.computed(function(){
+               return this.FirstName() + " " + this.LastName()
+            },this);
+        }
+
+        ko.applyBindings(new FirstPageViewModel("Pradeep", "Arkasali"));
+    </script>
+    </body>
+</html>
